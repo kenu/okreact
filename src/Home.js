@@ -1,3 +1,10 @@
+import HeaderCommon from './HeaderCommon.js';
+
 export default function Home() {
-  return <h2>Home moved</h2>;
+  return (
+  <>
+    <HeaderCommon></HeaderCommon>
+    <h2>Home moved</h2>
+  </>
+  );
 }
