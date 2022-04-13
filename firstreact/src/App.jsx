@@ -1,23 +1,14 @@
-import { useState } from 'react'
 import logo from './logo.svg'
 import './App.css'
+import Section from './components/Section'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>안녕 Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.jsx</code> and save to test HMR updates.
-        </p>
+        <Section />
         <p>
           <a
             className="App-link"
