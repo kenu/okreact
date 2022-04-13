@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <Section></Section>
+        <Section name="인택"></Section>
         <p>
           <a
             className="App-link"

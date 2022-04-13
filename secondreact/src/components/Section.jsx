@@ -1,11 +1,11 @@
 import { useState } from 'react'
 
-function Section() {
+function Section(props) {
     const [count, setCount] = useState(0)
 
     return(
         <>
-            <p>Hello Vite + React!</p>
+            <p>Hello {props.name}</p>
         <p>
           <button type="button" onClick={() => setCount((count) => count + 1)}>
             count is: {count}
