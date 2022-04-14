@@ -14,7 +14,7 @@ const Create = () => {
   }
   return (
     <>
-      <h1>Create</h1>
+      <h1>Create!!!</h1>
       <input type="text" placeholder="firstName" id="firstName" />
       <input type="text" placeholder="lastName" id="lastName" />
       <button type="submit" onClick={handleChange}>
