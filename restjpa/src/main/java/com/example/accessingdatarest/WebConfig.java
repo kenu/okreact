@@ -14,7 +14,7 @@ public class WebConfig
       RepositoryRestConfiguration config, CorsRegistry cors) {
 
     cors.addMapping("/**")
-        .allowedOrigins("http://localhost:3000")
+        .allowedOrigins("http://localhost:3000", "https://kenureact.netlify.app/")
         .allowedMethods("GET", "POST", "PUT", "DELETE")
         .allowCredentials(false).maxAge(3600);
   }

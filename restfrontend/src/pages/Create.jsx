@@ -6,9 +6,11 @@ const Create = () => {
       firstName: document.getElementById('firstName').value,
       lastName: document.getElementById('lastName').value,
     };
-    axios.post('http://localhost:8080/people', params).then((res) => {
-      console.log(res.data);
-    });
+    axios
+      .post(import.meta.env.VITE_API_SERVER + '/people', params)
+      .then((res) => {
+        console.log(res.data);
+      });
   }
   return (
     <>

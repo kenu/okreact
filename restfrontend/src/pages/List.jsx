@@ -7,14 +7,17 @@ const List = () => {
   console.log(a);
 
   useEffect(() => {
-    axios.get('http://localhost:8080/people').then((res) => {
+    axios.get(import.meta.env.VITE_API_SERVER + '/people').then((res) => {
       console.log(res);
       setData(res.data._embedded.people);
     });
   }, [a]);
 
   const listItems = data.map((item, index) => (
-    <li key={index}>{`${item.firstName}, ${item.lastName}`}</li>
+    <>
+      <span>{JSON.stringify(item._links.self.href)}</span>
+      <li key={index}>{`${index}: ${item.firstName}, ${item.lastName}`}</li>
+    </>
   ));
 
   return (

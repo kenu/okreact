@@ -8,17 +8,22 @@ const Delete = () => {
   }
   function handleSubmit(e) {
     e.preventDefault();
-    axios.delete(`http://localhost:8080/people/${id}`).then((res) => {
-      console.log(res.data);
-    });
+    axios
+      .delete(`${import.meta.env.VITE_API_SERVER}/people/${id}`)
+      .then((res) => {
+        console.log(res.data);
+      });
   }
   return (
     <div>
       <h1>Delete</h1>
       <input type="text" placeholder="id" id="id" onChange={handleChange} />
-      <button type="submit" onClick={handleSubmit}> Delete </button>
+      <button type="submit" onClick={handleSubmit}>
+        {' '}
+        Delete{' '}
+      </button>
     </div>
   );
-}
+};
 
 export default Delete;
