@@ -17,7 +17,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/" element={<App />} />
         <Route path="/list" element={<List />} />
         <Route path="/create" element={<Create />} />
-        <Route path="/update" element={<Update />} />
+        <Route path="/update/:id" element={<Update />} />
         <Route path="/delete" element={<Delete />} />
       </Routes>
     </BrowserRouter>

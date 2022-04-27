@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 const Update = () => {
+  const { id } = useParams();
   const [params, setParams] = useState({ firstName: '', lastName: '' });
   useEffect(() => {
-    axios.get(import.meta.env.VITE_API_SERVER + '/people/1').then((res) => {
+    axios.get(import.meta.env.VITE_API_SERVER + '/people/' + id).then((res) => {
       setParams({ firstName: res.data.firstName, lastName: res.data.lastName });
     });
   }, [params.firstName, params.lastName]);
@@ -14,7 +16,7 @@ const Update = () => {
       lastName: document.getElementById('lastName').value,
     };
     axios
-      .put(import.meta.env.VITE_API_SERVER + '/people/1', params)
+      .put(import.meta.env.VITE_API_SERVER + '/people/' + id, params)
       .then((res) => {
         console.log(res.data);
       });
