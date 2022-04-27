@@ -8,7 +8,7 @@ import App from './App'
 import makeServer from './server'
 
 if (process.env.NODE_ENV === 'production') {
-  axios.defaults.baseURL = 'https://conduit.productionready.io/api'
+  axios.defaults.baseURL = 'https://api.realworld.io/api'
 }
 
 const defaultQueryFn = async ({ queryKey }) => {
@@ -25,7 +25,7 @@ const queryClient = new QueryClient({
   },
 })
 
-if (window.Cypress) {
+if (window.Cypress && process.env.NODE_ENV === 'test') {
   const cyServer = createServer({
     routes() {
       ;['get', 'put', 'patch', 'post', 'delete'].forEach((method) => {
@@ -34,7 +34,7 @@ if (window.Cypress) {
     },
   })
   cyServer.logging = false
-} else {
+} else if(process.env.NODE_ENV === 'development') {
   makeServer({ environment: 'development' })
 }
 
