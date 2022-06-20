@@ -5,7 +5,7 @@ function App(props) {
   return (
     <div className="App">
       <h1>Main</h1>
-      {list.map((item, index) => (
+      {list.forEach((item, index) => (
         <Comp value={item} key={index} />
       ))}
     </div>
