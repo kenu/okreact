@@ -1,46 +1,48 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import axios from 'axios';
+import { useState, useEffect } from "react"
+import { useParams } from "react-router-dom"
+import axios from "axios"
 
 const Update = () => {
-  const { id } = useParams();
-  const [params, setParams] = useState({ firstName: '', lastName: '' });
+  const { id } = useParams()
+  const [first, setFirst] = useState("")
+  const [last, setLast] = useState("")
+
   useEffect(() => {
-    axios.get(import.meta.env.VITE_API_SERVER + '/people/' + id).then((res) => {
-      setParams({ firstName: res.data.firstName, lastName: res.data.lastName });
-    });
-  }, [params.firstName, params.lastName]);
-  function handleChange(e) {
-    const params = {
-      firstName: document.getElementById('firstName').value,
-      lastName: document.getElementById('lastName').value,
-    };
+    axios.get(import.meta.env.VITE_API_SERVER + "/people/" + id).then((res) => {
+      setFirst(res.data.firstName || "")
+      setLast(res.data.lastName || "")
+    })
+  }, [])
+
+  function handleSubmit(_e) {
+    const params = { firstName: first, lastName: last }
     axios
-      .put(import.meta.env.VITE_API_SERVER + '/people/' + id, params)
+      .put(import.meta.env.VITE_API_SERVER + "/people/" + id, params)
       .then((res) => {
-        console.log(res.data);
-      });
+        console.log(res.data)
+      })
   }
+
+  function handleFirst(e) {
+    console.log(e.target.value)
+    setFirst(e.target.value)
+  }
+
+  function handleLast(e) {
+    console.log(e.target.value)
+    setLast(e.target.value)
+  }
+
   return (
     <>
       <h1>Update</h1>
-      <input
-        type="text"
-        placeholder="firstName"
-        id="firstName"
-        value={params.firstName}
-      />
-      <input
-        type="text"
-        placeholder="lastName"
-        id="lastName"
-        value={params.lastName}
-      />
-      <button type="submit" onClick={handleChange}>
+      <input type="text" value={first} onChange={handleFirst} />
+      <input type="text" value={last} onChange={handleLast} />
+      <button type="submit" onClick={handleSubmit}>
         Update
       </button>
     </>
-  );
-};
+  )
+}
 
-export default Update;
+export default Update
