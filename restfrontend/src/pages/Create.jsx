@@ -1,6 +1,8 @@
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Create = () => {
+  const navigate = useNavigate();
   function handleChange(e) {
     const params = {
       firstName: document.getElementById('firstName').value,
@@ -10,6 +12,8 @@ const Create = () => {
       .post(import.meta.env.VITE_API_SERVER + '/people', params)
       .then((res) => {
         console.log(res.data);
+        alert('Created!');
+        navigate('/list');
       });
   }
   return (
