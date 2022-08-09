@@ -11,7 +11,7 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.3.0",
-    "use-query-params": "^1.2.3"
+    "use-query-params": "^2.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",
